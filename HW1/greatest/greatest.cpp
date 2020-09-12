@@ -15,7 +15,7 @@ int main()
 	int i, n; //integers for incrementing for-loop and storing user's input
 	float arr[10]; //size-10 array for storing the user's inputs
 
-	cout << endl << "Enter a sequence of positive integers." << endl; //introduce the application to the user
+	cout << "Enter a sequence of positive integers." << endl; //introduce application
 	cout << endl << "To finish, input 0." << endl;
 	cout << endl << "Afterwards, this application will print the biggest of your integers." << endl;
 
@@ -44,6 +44,7 @@ int main()
 		}
 	}
 
-	cout << endl << "The greatest number entered: " << arr[0] << endl; //print the biggest stored value in the array
+	//print the biggest stored value in the array
+	cout << endl << "The greatest number entered: " << arr[0] << endl;
 	return 0;
 }

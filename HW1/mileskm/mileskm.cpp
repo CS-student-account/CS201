@@ -16,10 +16,13 @@ int main()
 {
 	float miles;
 
-	cout << "This application converts miles to kilometers to 3 sig figs." << endl;  //state purpose of application
+	//state purpose of application
+	cout << "This application converts miles to kilometers to 3 sig figs." << endl;
 	cout << endl << "Please enter the number of miles to convert: ";
 	cin >> miles; //store user's input as a float representing the number of miles
 
-	cout << endl << "Your miles converted to kilometers is: " << setprecision(3) << (miles*1.609) << " km" << endl; //convert the user's input value to km as a float to 3 sig figs
+	//convert the user's input value to km as a float to 3 sig figs
+	cout << endl << "Your miles converted to kilometers is: " ; 
+	cout << setprecision(3) << (miles*1.609) << " km" << endl;
 	return 0;
 }
