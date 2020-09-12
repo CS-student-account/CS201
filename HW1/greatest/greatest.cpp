@@ -12,39 +12,38 @@ using std::endl;
 
 int main()
 {
-	int i, n;
-	float arr[10];
+	int i, n; //integers for incrementing for-loop and storing user's input
+	float arr[10]; //size-10 array for storing the user's inputs
 
-	cout << endl << "Enter a sequence of positive integers." << endl;  //state purpose of application
-	cout << endl << "To finish, input 0." << endl;  //state purpose of application
-	cout << endl << "Afterwards, this application will print the biggest of your integers." << endl;  //state purpose of application
+	cout << endl << "Enter a sequence of positive integers." << endl; //introduce the application to the user
+	cout << endl << "To finish, input 0." << endl;
+	cout << endl << "Afterwards, this application will print the biggest of your integers." << endl;
 
 	// Store number entered by the user
-	for (i = 0; i < 10; ++i)
+	for (i = 0; i < 10; ++i) 
 	{
-		cout << endl << "Enter a positive integer: ";
-		cin >> n;
-		arr[i] = n;
+		cout << endl << "Enter a positive integer: "; //prompt user for an input
+		cin >> n; //store user's input into variable n
+		arr[i] = n;  //transfer current value of n into array
 		if (n < 0) //display error for non-accepted integers
 		{
 			cout << endl << "Negative integers are not accepted." << endl;
 			--i;
 		}
-		if (n == 0)
+		if (n == 0) //if the user inputs 0, the for-loop exits prematurely
 		{
 			break;
 		}
-
 	}
 
-	// Loop to store largest number to arr[0]
-	for (i = 1; i < 10; ++i)
+	for (i = 1; i < 10; ++i) //loop for storing user's input into array
 	{
-		// Change < to > if you want to find the smallest element
 		if (arr[0] < arr[i])
+		{
 			arr[0] = arr[i];
+		}
 	}
 
-	cout << endl << "The greatest number entered: " << arr[0] << endl;
+	cout << endl << "The greatest number entered: " << arr[0] << endl; //print the biggest stored value in the array
 	return 0;
 }

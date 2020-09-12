@@ -6,11 +6,20 @@
 */
 
 #include <iostream>
+#include <iomanip>
 using std::cout;
 using std::cin;
 using std::endl;
+using std::setprecision;
 
 int main()
 {
+	float miles;
+
+	cout << "This application converts miles to kilometers to 3 sig figs." << endl;  //state purpose of application
+	cout << endl << "Please enter the number of miles to convert: ";
+	cin >> miles; //store user's input as a float representing the number of miles
+
+	cout << endl << "Your miles converted to kilometers is: " << setprecision(3) << (miles*1.609) << " km" << endl; //convert the user's input value to km as a float to 3 sig figs
 	return 0;
 }
