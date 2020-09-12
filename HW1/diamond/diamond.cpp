@@ -18,6 +18,11 @@ int main()
 	cout << endl << "Input an integer: "; //ask user for an integer input
 	cin >> r; //accept user's input
 
+	if (r <= 0) //display error for non-accepted integers
+	{
+		cout << endl << "Zero and negative integers are not accepted.";
+	}
+
 	for (i = 0; i <= r; i++) //print top half of diamond
 	{
 		for (j = 1; j <= r - i; j++)
@@ -35,5 +40,6 @@ int main()
 			cout << "*";
 		cout << endl;;
 	}
+
 	return 0;
 }
