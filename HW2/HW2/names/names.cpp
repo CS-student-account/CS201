@@ -18,6 +18,7 @@ using std::find;
 
 void InputNames(vector<string> & names);
 bool DoesNameExist(const string & nameToFind, const vector<string> & names);
+void PrintNames(const vector<string> & names);
 
 int main()
 {
@@ -52,4 +53,9 @@ bool DoesNameExist(const string & nameToFind, const vector<string> & names)
 		cout << endl << "Name 'David' IS NOT found." << endl;
 		return 0;
 	}
+}
+
+void PrintNames(const vector<string> & names)
+{
+	return;
 }
