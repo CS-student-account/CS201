@@ -9,23 +9,31 @@
 #include <vector>
 #include <string>
 #include <algorithm>
+#include <iterator>
 using std::cout;
 using std::endl;
 using std::cin;
 using std::vector;
 using std::string;
 using std::find;
+using std::reverse;
+using std::copy;
+using std::ostream_iterator;
+using std::sort;
+using std::greater;
 
 void InputNames(vector<string> & names);
-bool DoesNameExist(const string & nameToFind, const vector<string> & names);
-void PrintNames(const vector<string> & names);
+bool DoesNameExist(string & nameToFind, vector<string> & names);
+void PrintNames(vector<string> & names);
 
 int main()
 {
 	vector<string> names;
-	const string nameToFind;
+	string nameToFind;
+
 	InputNames(names);
 	DoesNameExist(nameToFind, names);
+	PrintNames(names);
 	return 0;
 }
 
@@ -41,7 +49,7 @@ void InputNames(vector<string> & names)
 	return;
 }
 
-bool DoesNameExist(const string & nameToFind, const vector<string> & names)
+bool DoesNameExist(string & nameToFind, vector<string> & names)
 {
 	if (find(names.begin(), names.end(), "David") != names.end())
 	{
@@ -50,12 +58,18 @@ bool DoesNameExist(const string & nameToFind, const vector<string> & names)
 	}
 	else
 	{
-		cout << endl << "Name 'David' IS NOT found." << endl;
+		cout << endl << "Name 'David' IS NOT found." << endl << endl;
 		return 0;
 	}
 }
 
-void PrintNames(const vector<string> & names)
+void PrintNames(vector<string> & names)
 {
+	sort(names.begin(), names.end());
+
+	for (int i = 0; i < 10; i++)
+	{
+		cout <<  names[i] << " " << endl;
+	}
 	return;
 }
