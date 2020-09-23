@@ -29,26 +29,26 @@ int main()
 
 		if (sum >= 1000 && !flag1)
 		{
-			cout << endl << "For 1,000 grains of rice, you need " << i << " chess squares." << endl << endl;
+			cout << endl << "For 1,000 grains of rice, you need " << i+1 << " chess squares." << endl << endl;
 			flag1 = true;
 		}
 
 		if (sum >= 1'000'000 && !flag2)
 		{
-			cout << endl << "For 1,000,000 grains of rice, you need " << i << " chess squares." << endl << endl;
+			cout << endl << "For 1,000,000 grains of rice, you need " << i+1 << " chess squares." << endl << endl;
 			flag2 = true;
 		}
 
 		if (sum >= 1'000'000'000 && !flag3)
 		{
-			cout << endl << "For 1,000,000,000 grains of rice, you need " << i << " chess squares." << endl << endl;
+			cout << endl << "For 1,000,000,000 grains of rice, you need " << i+1 << " chess squares." << endl << endl;
 			flag3 = true;
 		}
 		sum += current;
 	}
 
-	cout << endl << "Using integers, the largest number of squares capable of representing the grains of rice is 30." << endl;
-	cout << endl << "Using doubles, all 64 squares are capable of representing the grains of rice." << endl;
+	cout << endl << "Using integers, the largest number of squares capable of representing the grains of rice is 31." << endl;
+	cout << endl << "Using doubles, the largest number of squares capable of representing the grains of rice is 20." << endl;
 
 	return 0;
 }
