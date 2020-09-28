@@ -82,17 +82,21 @@ int main()
 	}
 
 	//print the total sum of money in either cents or dollars
-	if (((pennies*0.01) + (nickels*0.05) + (dimes*0.10) + (quarters*0.25) + (dollars)) == 0)
+	if (((pennies*0.01) + (nickels*0.05) + (dimes*0.10) + (quarters*0.25) 
+		+ (dollars)) == 0)
 	{
 		cout <<endl << "You have nothing, sir!" << endl;
 	}
-	else if (((pennies*0.01) + (nickels*0.05) + (dimes*0.10) + (quarters*0.25) + (dollars)) < 1)
+	else if (((pennies*0.01) + (nickels*0.05) + (dimes*0.10) + (quarters*0.25) 
+		+ (dollars)) < 1)
 	{
-		cout << endl << "You have a total of " << ((pennies*0.01) + (nickels*0.05) + (dimes*0.10) + (quarters*0.25))*10 << " cents" << endl;
+		cout << endl << "You have a total of " << ((pennies*0.01) + (nickels*0.05) 
+			+ (dimes*0.10) + (quarters*0.25))*100 << " cents" << endl;
 	}
 	else
 	{
-		cout << endl << "You have a total of $" << setprecision(3) << (pennies*0.01) + (nickels*0.05) + (dimes*0.10) + (quarters*0.25) + (dollars) << endl;
+		cout << endl << "You have a total of $" << setprecision(3) << (pennies*0.01) 
+			+ (nickels*0.05) + (dimes*0.10) + (quarters*0.25) + (dollars) << endl;
 	}
 	return 0;
 }
