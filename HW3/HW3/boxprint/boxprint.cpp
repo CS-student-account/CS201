@@ -15,5 +15,15 @@ using std::string;
 
 int main()
 {
+	string inputString;
+	int inputInt;
+
+	cout << endl;
+	cout << "Please enter a word: ";
+	cin >> inputString;
+	cout << "For the thickness of the box's frame, please enter an integer: ";
+	cin >> inputInt;
+
+	boxer(inputString, inputInt);
 	return 0;
 }
