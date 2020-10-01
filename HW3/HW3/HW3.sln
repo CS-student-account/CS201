@@ -7,6 +7,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "boxprint", "boxprint\boxpri
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "collatz", "collatz\collatz.vcxproj", "{52395CD7-E805-438F-BC57-3792EC401B11}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "kelvin", "kelvin\kelvin.vcxproj", "{5C64330E-8CE9-43E7-A00C-ACBE18422834}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -31,6 +33,14 @@ Global
 		{52395CD7-E805-438F-BC57-3792EC401B11}.Release|x64.Build.0 = Release|x64
 		{52395CD7-E805-438F-BC57-3792EC401B11}.Release|x86.ActiveCfg = Release|Win32
 		{52395CD7-E805-438F-BC57-3792EC401B11}.Release|x86.Build.0 = Release|Win32
+		{5C64330E-8CE9-43E7-A00C-ACBE18422834}.Debug|x64.ActiveCfg = Debug|x64
+		{5C64330E-8CE9-43E7-A00C-ACBE18422834}.Debug|x64.Build.0 = Debug|x64
+		{5C64330E-8CE9-43E7-A00C-ACBE18422834}.Debug|x86.ActiveCfg = Debug|Win32
+		{5C64330E-8CE9-43E7-A00C-ACBE18422834}.Debug|x86.Build.0 = Debug|Win32
+		{5C64330E-8CE9-43E7-A00C-ACBE18422834}.Release|x64.ActiveCfg = Release|x64
+		{5C64330E-8CE9-43E7-A00C-ACBE18422834}.Release|x64.Build.0 = Release|x64
+		{5C64330E-8CE9-43E7-A00C-ACBE18422834}.Release|x86.ActiveCfg = Release|Win32
+		{5C64330E-8CE9-43E7-A00C-ACBE18422834}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
