@@ -7,9 +7,9 @@ using std::string;
 
 int boxer(string inputString, int inputInt)
 {
-	int pad = 2;
-	int rows = (pad * 2) + inputString.size() + (2 * inputInt);
-	int columns = 1 + (pad * 2) + (2 * inputInt);
+	int pad = 2; //blank space padding
+	int rows = (pad * 2) + inputString.size() + (2 * inputInt); //ensuring proper width
+	int columns = 1 + (pad * 2) + (2 * inputInt); //ensuring proper height
 	int columnCounter = 0;
 
 	cout << endl;
@@ -20,20 +20,21 @@ int boxer(string inputString, int inputInt)
 
 		while (rowCounter != rows)
 		{
-			if (rowCounter <= inputInt - 1 || rowCounter >= rows - inputInt || columnCounter <= inputInt - 1 || columnCounter >= columns - inputInt)
+			if (rowCounter <= inputInt - 1 || rowCounter >= rows - inputInt || columnCounter <= inputInt - 1
+				|| columnCounter >= columns - inputInt) //print * based off user-selected thickness
 			{
 				cout << "*";
 			}
 			else
 			{
-				if (rowCounter == pad + inputInt && columnCounter == pad + inputInt)
+				if (rowCounter == pad + inputInt && columnCounter == pad + inputInt) //print user's string in middle of box
 				{
 					cout << inputString;
 					rowCounter += (inputString.size() - 1);
 				}
 				else
 				{
-					cout << " ";
+					cout << " "; //print blank spaces for padding everywhere else in-between the box
 				}
 			}
 			++rowCounter;
