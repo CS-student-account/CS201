@@ -28,13 +28,13 @@ double ctok(double c)
 int main()
 {
 	double c;
-	cout << "This program converts celsius to kelvin." << endl 
+	cout << endl << "This program converts celsius to kelvin." << endl 
 		<< "Please enter a temperature in celsius you wish to convert to kelvin: ";
 	cin >> c;
 	double k = ctok(c);
-	if (!c <= -273.15) //only converts celsius to kelvin if greater than zero kelvin
+	if (c > -273.15) //only converts celsius to kelvin if greater than zero kelvin
 	{
-		cout << c << " degrees celsius converted to kelvin is " << k << endl;
+		cout << endl << c << " degrees celsius converted to kelvin is " << k << " K" << endl;
 	}
 	return 0;
 }
