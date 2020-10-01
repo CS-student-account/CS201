@@ -1,3 +1,11 @@
+/*
+* boxer.cpp
+* David Misyura
+* 29 Sept 2020
+* boxer.cpp for CS201
+* based off code from https://stackoverflow.com/questions/17988493
+*/
+
 #include <iostream>
 #include <string>
 using std::cout;

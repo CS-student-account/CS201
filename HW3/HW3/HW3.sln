@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.28307.1259
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "boxprint", "boxprint\boxprint.vcxproj", "{070F8E46-BA88-433C-80F7-96DF1604B0CF}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "collatz", "collatz\collatz.vcxproj", "{52395CD7-E805-438F-BC57-3792EC401B11}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -21,6 +23,14 @@ Global
 		{070F8E46-BA88-433C-80F7-96DF1604B0CF}.Release|x64.Build.0 = Release|x64
 		{070F8E46-BA88-433C-80F7-96DF1604B0CF}.Release|x86.ActiveCfg = Release|Win32
 		{070F8E46-BA88-433C-80F7-96DF1604B0CF}.Release|x86.Build.0 = Release|Win32
+		{52395CD7-E805-438F-BC57-3792EC401B11}.Debug|x64.ActiveCfg = Debug|x64
+		{52395CD7-E805-438F-BC57-3792EC401B11}.Debug|x64.Build.0 = Debug|x64
+		{52395CD7-E805-438F-BC57-3792EC401B11}.Debug|x86.ActiveCfg = Debug|Win32
+		{52395CD7-E805-438F-BC57-3792EC401B11}.Debug|x86.Build.0 = Debug|Win32
+		{52395CD7-E805-438F-BC57-3792EC401B11}.Release|x64.ActiveCfg = Release|x64
+		{52395CD7-E805-438F-BC57-3792EC401B11}.Release|x64.Build.0 = Release|x64
+		{52395CD7-E805-438F-BC57-3792EC401B11}.Release|x86.ActiveCfg = Release|Win32
+		{52395CD7-E805-438F-BC57-3792EC401B11}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
