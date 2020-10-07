@@ -11,7 +11,7 @@ using std::cout;
 using std::cin;
 using std::endl;
 
-double ctok(double c)
+double ctok(double &c)
 {
 	if (c <= -273.15) //produce error if user inputs below zero kelvin
 	{
