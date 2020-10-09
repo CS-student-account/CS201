@@ -21,7 +21,7 @@ using std::istringstream;
 
 
 
-
+//cout << typeid(tokens[i]).name() << endl;
 
 
 
@@ -34,7 +34,7 @@ int main()
 	{
 		cout << endl;
 		ReadLine(str);
-
+		StringToTokenWS(str, tokens);
 
 		if (tokens.back() == "end")
 		{
