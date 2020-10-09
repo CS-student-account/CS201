@@ -14,3 +14,11 @@ using std::endl;
 using std::string;
 using std::vector;
 
+bool ReadLine(std::string &str)
+{
+	if (getline(cin, str))
+	{
+		return true;
+	}
+	else return false;
+}
