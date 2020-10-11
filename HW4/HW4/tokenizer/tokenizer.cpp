@@ -1,7 +1,7 @@
 /*
 * tokenizer.cpp
 * David Misyura
-* 6 Oct 2020
+* 10 Oct 2020
 * tokenizer.cpp for CS201
 */
 
@@ -9,7 +9,6 @@
 #include <string>
 #include <vector>
 #include <sstream>
-#include <typeinfo>
 using std::cin;
 using std::cout;
 using std::endl;
@@ -21,11 +20,11 @@ using std::istringstream;
 bool ReadLine(std::string &str)
 {
 	cout << "Please type in some text: ";
-	if (getline(cin, str))
+	if (getline(cin, str)) 
 	{
-		return true;
+		return true; 
 	}
-	else return false;
+	else return false; 
 }
 
 unsigned StringToTokenWS(const std::string &input, std::vector<std::string> &tokens)
@@ -33,21 +32,11 @@ unsigned StringToTokenWS(const std::string &input, std::vector<std::string> &tok
 	istringstream instream(input);
 	string token;
 
-	//cout << endl;
 	while (instream >> token)
 	{
 		tokens.push_back(token);
-		/*if (token != "end")
-		{
-			cout << token << '\n';
-			tokens.push_back(" ");
-		}*/
-
-		/*if (' ')
-		{
-			cout << ' ';
-		}*/
 	}
+
 	tokens.push_back(" ");
 	return tokens.size();
 }

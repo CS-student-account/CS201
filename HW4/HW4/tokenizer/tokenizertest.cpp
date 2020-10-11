@@ -1,7 +1,7 @@
 /*
 * tokenizertest.cpp
 * David Misyura
-* 6 Oct 2020
+* 10 Oct 2020
 * tokenizertest.cpp for CS201
 */
 
@@ -10,9 +10,6 @@
 #include <string>
 #include <vector>
 #include <sstream>
-#include <typeinfo>
-#include <cctype>
-#include <algorithm>
 using std::cin;
 using std::cout;
 using std::endl;
@@ -23,21 +20,21 @@ using std::istringstream;
 
 int main()
 {
-	string str;
-	vector<string> tokens;
+	string str; //string for user's input
+	vector<string> tokens; //vector of strings for tokenizing the user's input strings
 
 	cout << endl;
 	cout << "Please type in some text, separated by spaces. When you're done, type 'end'." << endl;
 
-	while (true)
+	while (true) //a simple loop to operate the program until "end" is typed
 	{
 		cout << endl;
-		ReadLine(str);
+		ReadLine(str); 
 		StringToTokenWS(str, tokens);
 		AnalyzeTokens(tokens);
 		if (!tokens.empty())
 		{
-			if (tokens[tokens.size() - 2] == "end")
+			if (tokens[tokens.size() - 2] == "end") //if the second to last string entered is "end", the program will end
 			{
 				break;
 			}
