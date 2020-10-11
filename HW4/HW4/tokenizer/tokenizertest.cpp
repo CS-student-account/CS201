@@ -11,6 +11,8 @@
 #include <vector>
 #include <sstream>
 #include <typeinfo>
+#include <cctype>
+#include <algorithm>
 using std::cin;
 using std::cout;
 using std::endl;
@@ -19,30 +21,27 @@ using std::vector;
 using std::getline;
 using std::istringstream;
 
-
-
-//cout << typeid(tokens[i]).name() << endl;
-
-
-
 int main()
 {
 	string str;
 	vector<string> tokens;
+
+	cout << endl;
+	cout << "Please type in some text, separated by spaces. When you're done, type 'end'." << endl;
 
 	while (true)
 	{
 		cout << endl;
 		ReadLine(str);
 		StringToTokenWS(str, tokens);
-
-		if (tokens.back() == "end")
+		AnalyzeTokens(tokens);
+		if (!tokens.empty())
 		{
-			break;
+			if (tokens[tokens.size() - 2] == "end")
+			{
+				break;
+			}
 		}
 	}
-
-
-
 	return 0;
 }
