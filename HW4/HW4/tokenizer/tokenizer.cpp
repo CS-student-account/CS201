@@ -20,35 +20,35 @@ using std::istringstream;
 bool ReadLine(std::string &str)
 {
 	cout << "Please type in some text: ";
-	if (getline(cin, str)) 
+	if (getline(cin, str)) //accept a string input from the user and save it as the string str
 	{
-		return true; 
+		return true; //if a string is accepted, return true
 	}
-	else return false; 
+	else return false; //if no string is accepted, return false
 }
 
 unsigned StringToTokenWS(const std::string &input, std::vector<std::string> &tokens)
 {
-	istringstream instream(input);
+	istringstream instream(input); //reads the string passed in through istringstream
 	string token;
 
-	while (instream >> token)
+	while (instream >> token) //pushes each of the tokens from the string separated by a space into the vector of strings
 	{
 		tokens.push_back(token);
 	}
 
-	tokens.push_back(" ");
-	return tokens.size();
+	tokens.push_back(" "); //at the end of each line, push a whitespace
+	return tokens.size(); //returns how many tokens there are
 }
 
 void AnalyzeTokens(const std::vector<std::string> &tokens)
 {
-	vector<string> final;
+	vector<string> final; //a tempoorary vector for pushing in final printouts
 
-	for (const auto &i : tokens)
+	for (const auto &i : tokens) //iterate through each string in the vector
 	{
 
-		for (const int &character : i)
+		for (const int &character : i) //iterate through each character of each string
 		{
 			if (character <= 122 && character >= 97)
 			{
@@ -88,7 +88,7 @@ void AnalyzeTokens(const std::vector<std::string> &tokens)
 		}
 	}
 
-	if (tokens[tokens.size() - 2] == "end")
+	if (tokens[tokens.size() - 2] == "end") //if "end" is input, this program will print out the identified strings
 	{
 		for (int j = 0; j < final.size() - 2; j++)
 		{

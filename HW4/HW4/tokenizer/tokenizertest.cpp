@@ -24,7 +24,7 @@ int main()
 	vector<string> tokens; //vector of strings for tokenizing the user's input strings
 
 	cout << endl;
-	cout << "Please type in some text, separated by spaces. When you're done, type 'end'." << endl;
+	cout << "Please type in some text, separated by spaces. When you're done, type \"end\"." << endl;
 
 	while (true) //a simple loop to operate the program until "end" is typed
 	{
