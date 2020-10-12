@@ -63,7 +63,7 @@ void AnalyzeTokens(const std::vector<std::string> &tokens)
 
 			if (character == 34)
 			{
-				final.push_back("[quote] \"" + i + "\"" + ' ');
+				final.push_back("[quote] " + i + ' ');
 				break;
 			}
 
