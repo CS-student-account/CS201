@@ -47,7 +47,6 @@ void AnalyzeTokens(const std::vector<std::string> &tokens)
 
 	for (const auto &i : tokens) //iterate through each string in the vector
 	{
-
 		for (const int &character : i) //iterate through each character of each string
 		{
 			if (character <= 122 && character >= 97)

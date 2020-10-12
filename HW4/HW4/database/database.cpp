@@ -1,7 +1,7 @@
 /*
 * database.cpp
 * David Misyura
-* 10 Oct 2020
+* 11 Oct 2020
 * database.cpp for CS201
 */
 
@@ -10,27 +10,38 @@
 #include <string>
 #include <vector>
 #include <sstream>
+#include <fstream>
 using std::cin;
 using std::cout;
 using std::endl;
 using std::string;
-using std::vector;
 using std::getline;
+using std::vector;
 using std::istringstream;
+using std::map;
 
-std::map<std::string, MyDatabaseRecord> theDatabase;
+map<string, MyDatabaseRecord> database;
+
+/*bool CreateRecord(const string &key)
+{
+	string database = key;
+	map<string, MyDatabaseRecord> database;
+	return 0;
+}*/
+
 // Implement functions here 
 // UpdateRecord(key, record) sets the database to the new value 
 // @param {string} key 
 // @param {MyDatabaseRecord} record 
 // @return true if operation successful 
-bool UpdateRecord(const std::string &key, const MyDatabaseRecord &record)
+bool UpdateRecord(const string &key, const MyDatabaseRecord &record)
 {
-	auto it = theDatabase.find(key); if (it == theDatabase.end())
+	auto it = database.find(key); 
+	if (it == database.end())
 	{
 		return false;
 	}
-	theDatabase[key] * record;
+	database[key] = record;
 	return true;
 }
 
@@ -38,12 +49,29 @@ bool UpdateRecord(const std::string &key, const MyDatabaseRecord &record)
 // @param {string} key 
 // @param {MyDatabaseRecord} record 
 // @returns false if the record does not exist 
-bool ReadRecord(const std::string &key, MyDatabaseRecord &record)
+bool ReadRecord(const string &key, MyDatabaseRecord &record)
 {
-	auto it = theDatabase.find(key); if (it == theDatabase.end())
+	auto it = database.find(key); 
+	if (it == database.end())
 	{
 		return false;
 	}
 	record = it->second;
 	return true;
+}
+
+bool DeleteRecord(const string &key)
+{
+	return 0;
+}
+
+bool InputRecord(MyDatabaseRecord &record)
+{
+	
+	return 0;
+}
+
+bool PrintRecord(const std::string & key)
+{
+	return 0;
 }

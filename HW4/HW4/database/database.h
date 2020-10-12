@@ -6,12 +6,10 @@
 
 struct MyDatabaseRecord
 {
-	// replace this with information related to your database 
-	std::string objectName{"obj"}; 
-	std::string materialName{ "mtl" };
-	std::string diffuseColor{ "diff" };
-	std::string specularColor{ "spec" };
-	bool twoSided{ false };
+	std::string firstName; 
+	std::string lastName;
+	std::string city;
+	std::string grade;
 };
 
 bool CreateRecord(const std::string &key);
