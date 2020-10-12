@@ -22,12 +22,12 @@ using std::map;
 
 map<string, MyDatabaseRecord> database;
 
-/*bool CreateRecord(const string &key)
+bool CreateRecord(const string &key)
 {
-	string database = key;
-	map<string, MyDatabaseRecord> database;
-	return 0;
-}*/
+	MyDatabaseRecord temp;
+	auto temp2 = database.insert({ key, temp });
+	return temp2.second;
+}
 
 // Implement functions here 
 // UpdateRecord(key, record) sets the database to the new value 
@@ -36,7 +36,7 @@ map<string, MyDatabaseRecord> database;
 // @return true if operation successful 
 bool UpdateRecord(const string &key, const MyDatabaseRecord &record)
 {
-	auto it = database.find(key); 
+	auto it = database.find(key);
 	if (it == database.end())
 	{
 		return false;

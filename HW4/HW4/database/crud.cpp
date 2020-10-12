@@ -34,7 +34,8 @@ int main()
 	{
 		if (option == 1)
 		{
-			InputRecord(record);
+
+			CreateRecord();
 		}
 
 		if (option == 2)
