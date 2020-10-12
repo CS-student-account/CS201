@@ -100,7 +100,40 @@ int main()
 	cout << endl << "When you correctly guess the correct number but in the wrong position, that's a cow." << endl;
 	cout << endl << "You can also enter -1 to see the solution. Good luck." << endl << endl;
 
+	while (true)
+	{
+		bool answerDigitUsed[4] = { false, false, false, false };
+		bool guessDigitUsed[4] = { false, false, false, false };
+		cout << endl << " Please enter 4 digits: ";
+		cin >> guess;
+		istringstream guessStream(guess);
+		int guessInt;
+		guessStream >> guessInt;
 
+		if (guessInt == -1)
+		{
+			cout << "The correct number is " << answerString << endl;
+			break;
+		}
+
+		if (!(guessInt >= 1000 && guessInt <= 9999))
+		{
+			cout << endl << "Error! Not in the range of 1000-9999" << endl;
+			continue;
+		}
+
+		int bulls = countBulls(answerString, guess, answerDigitUsed, guessDigitUsed);
+
+		if (bulls == 4)
+		{
+			cout << endl << "Bullseye! You correctly guessed " << answerString << endl;
+			break;
+		}
+
+		int cows = countCows(answerString, guess, answerDigitUsed, guessDigitUsed);
+
+		cout << "Your guess of " << guess << " has " << bulls << " bull(s) and " << cows << " cow(s)." << endl;
+	}
 
 	return 0;
 }
