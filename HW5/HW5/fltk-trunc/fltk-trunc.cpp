@@ -26,6 +26,12 @@ int main(int argc, char **argv)
 	Fl_Window win(320, 190, "fltk-truncstruct");
 	win.begin();
 
+	Fl_Box *box = new Fl_Box(10, 20, 300, 20, 
+		"Enter a string and an integer for the string's length. Then, click the Truncate button.");
+	box->box(FL_NO_BOX);
+	box->labelfont(FL_BOLD);
+	box->align(FL_ALIGN_WRAP);
+
 	win.add(inputString);
 	inputString->tooltip("Enter any string you like.");
 
