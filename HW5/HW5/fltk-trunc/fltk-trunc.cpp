@@ -6,32 +6,35 @@
 */
 
 #include "truncstruct.hpp"
-#include <iostream>
 #include <string>
-#include <vector>
 #include <sstream>
-#include <cmath>
-#include <iomanip>
-using std::cin;
-using std::cout;
-using std::endl;
+#include <FL/Fl.H>
+#include <FL/Fl_Window.H>
+#include <FL/Fl_Button.H>
+#include <FL/Fl_Input.H>
+#include <FL/Fl_Output.H>
+#include <FL/Fl_Box.H>
 using std::string;
-using std::vector;
-using std::getline;
-using std::istringstream;
-using std::setprecision;
-using std::setw;
-using std::fixed;
-using std::getline;
+using std::stringstream;
 
-int main()
+Fl_Input *inputString = new Fl_Input(70, 60, 180, 20, "String ");
+Fl_Input *inputLength = new Fl_Input(70, 90, 180, 20, "Length ");
+Fl_Output *output = new Fl_Output(70, 120, 180, 20, "Output ");
+
+int main(int argc, char **argv) 
 {
-	string input;
-	getline(cin, input);
+	Fl_Window win(320, 190, "fltk-truncstruct");
+	win.begin();
 
-	StringInfo output = trunc8(input);
+	win.add(inputString);
+	inputString->tooltip("Enter any string you like.");
 
-	cout << output.str;
+	win.add(inputLength);
+	inputLength->tooltip("Enter the length you wish to truncate your string to.");
 
-	return 0;
+	win.add(output);
+
+	win.end();
+	win.show(argc,argv);
+	return Fl::run();
 }
