@@ -18,5 +18,8 @@
     <ClCompile Include="fltk-bulls-and-cows.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="bulls-and-cows.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
