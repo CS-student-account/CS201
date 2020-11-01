@@ -21,12 +21,31 @@ Fl_Input *inputString = new Fl_Input(70, 60, 180, 20, "String ");
 Fl_Input *inputLength = new Fl_Input(70, 90, 180, 20, "Length ");
 Fl_Output *output = new Fl_Output(70, 120, 180, 20, "Output ");
 
-int main(int argc, char **argv) 
+void truncatecb(Fl_Widget *, void *userdata)
+{
+	string inputLengthString = inputLength->value();
+	stringstream stream(inputLengthString);
+	size_t inputLengthSizeT;
+	stream >> inputLengthSizeT;
+
+	StringInfo truncation = trunc(StringInfo{ inputString->value(), inputLengthSizeT });
+
+	string inputStringString = truncation.str;
+	const char* outputString = const_cast<char*>(inputStringString.c_str());
+	output->value(outputString);
+}
+
+void quitcb(Fl_Widget *, void *)
+{
+	exit(0);
+}
+
+int main(int argc, char **argv)
 {
 	Fl_Window win(320, 190, "fltk-truncstruct");
 	win.begin();
 
-	Fl_Box *box = new Fl_Box(10, 20, 300, 20, 
+	Fl_Box *box = new Fl_Box(10, 20, 300, 20,
 		"Enter a string and an integer for the string's length. Then, click the Truncate button.");
 	box->box(FL_NO_BOX);
 	box->labelfont(FL_BOLD);
@@ -49,6 +68,6 @@ int main(int argc, char **argv)
 	buttonQuit->callback(quitcb, 0);
 
 	win.end();
-	win.show(argc,argv);
+	win.show(argc, argv);
 	return Fl::run();
 }
