@@ -69,7 +69,7 @@ int countCows(string &answer, string &guess, bool answerDigitUsed[], bool guessD
 	return count;
 }
 
-int main()
+/*int generate()
 {
 	random_device device; //this method generates real, random numbers
 	mt19937 generator(device());
@@ -144,4 +144,4 @@ int main()
 	}
 
 	return 0;
-}
+}*/
