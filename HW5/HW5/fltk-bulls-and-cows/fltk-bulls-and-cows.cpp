@@ -25,6 +25,36 @@ int main(int argc, char **argv)
 	Fl_Window win(380, 270, "fltk-bulls-and-cows");
 	win.begin();
 
+	Fl_Box *label1 = new Fl_Box(20, 10, 340, 20,
+		"Welcome to the game of Bulls and Cows.");
+	label1->box(FL_NO_BOX);
+	label1->labelfont(FL_BOLD);
+	label1->align(FL_ALIGN_WRAP);
+
+	Fl_Box *label2 = new Fl_Box(20, 40, 340, 20,
+		"In this game, you must guess a random, 4-digit number consisting of unique numbers.");
+	label2->box(FL_NO_BOX);
+	label2->labelfont(FL_BOLD);
+	label2->align(FL_ALIGN_WRAP);
+
+	Fl_Box *label3 = new Fl_Box(20, 80, 340, 20,
+		"When you correctly guess the correct number in the right position, that's a bull.");
+	label3->box(FL_NO_BOX);
+	label3->labelfont(FL_BOLD);
+	label3->align(FL_ALIGN_WRAP);
+
+	Fl_Box *label4 = new Fl_Box(20, 120, 340, 20,
+		"When you correctly guess the correct number but in the wrong position, that's a cow.");
+	label4->box(FL_NO_BOX);
+	label4->labelfont(FL_BOLD);
+	label4->align(FL_ALIGN_WRAP);
+
+	Fl_Box *label5 = new Fl_Box(20, 160, 340, 20,
+		"You can also enter -1 to see the solution.\nGood luck.");
+	label5->box(FL_NO_BOX);
+	label5->labelfont(FL_BOLD);
+	label5->align(FL_ALIGN_WRAP);
+
 	win.add(inputGuess);
 	inputGuess->tooltip("Enter a guess.");
 
