@@ -40,6 +40,14 @@ int main(int argc, char **argv)
 
 	win.add(output);
 
+	Fl_Button *buttonTruncate = new Fl_Button(60, 150, 80, 25, "&Truncate");
+	buttonTruncate->tooltip("Truncates the input string.");
+	buttonTruncate->callback(truncatecb, 0);
+
+	Fl_Button *buttonQuit = new Fl_Button(180, 150, 80, 25, "&Quit");
+	buttonQuit->tooltip("Quits the application.");
+	buttonQuit->callback(quitcb, 0);
+
 	win.end();
 	win.show(argc,argv);
 	return Fl::run();
