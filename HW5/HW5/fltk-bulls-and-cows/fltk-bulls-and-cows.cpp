@@ -20,9 +20,14 @@ using std::stringstream;
 Fl_Input *inputGuess = new Fl_Input(143, 200, 120, 20, "Guess ");
 Fl_Output *outputResult = new Fl_Output(143, 230, 120, 20, "Result ");
 
+void quitcb(Fl_Widget *, void *)
+{
+	exit(0);
+}
+
 int main(int argc, char **argv)
 {
-	Fl_Window win(380, 270, "fltk-bulls-and-cows");
+	Fl_Window win(380, 290, "fltk-bulls-and-cows");
 	win.begin();
 
 	Fl_Box *label1 = new Fl_Box(20, 10, 340, 20,
@@ -60,6 +65,10 @@ int main(int argc, char **argv)
 
 	win.add(outputResult);
 	outputResult->tooltip("Compares your guess to the correct answer.");
+
+	Fl_Button *buttonQuit = new Fl_Button(180, 250, 80, 25, "&Quit");
+	buttonQuit->tooltip("Quits the application.");
+	buttonQuit->callback(quitcb, 0);
 
 	win.end();
 	win.show(argc, argv);
