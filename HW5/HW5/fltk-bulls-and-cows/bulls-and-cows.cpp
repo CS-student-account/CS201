@@ -93,7 +93,7 @@ int main()
 
 	}
 
-	string answerString = answerIntVectorStream.str(); //pushges the vector into a string
+	string answerString = answerIntVectorStream.str(); //pushes the vector into a string
 	istringstream answerStream(answerString);
 	int answerInt;
 	answerStream >> answerInt;
