@@ -69,7 +69,7 @@ int countCows(string &answer, string &guess, bool answerDigitUsed[], bool guessD
 	return count;
 }
 
-/*int generate()
+/*string generate(string &guess)
 {
 	random_device device; //this method generates real, random numbers
 	mt19937 generator(device());
@@ -98,34 +98,26 @@ int countCows(string &answer, string &guess, bool answerDigitUsed[], bool guessD
 	int answerInt;
 	answerStream >> answerInt;
 	string guess;
-	cout << endl << "Welcome to the game of Bulls and Cows." << endl;
-	cout << endl << "In this game, you must guess a random, ";
-	cout << "4-digit number consisting of unique numbers." << endl;
-	cout << endl << "When you correctly guess the correct number in the right position, ";
-	cout << "that's a bull." << endl;
-	cout << endl << "When you correctly guess the correct number but in the wrong position, ";
-	cout << "that's a cow." << endl;
-	cout << endl << "You can also enter -1 to see the solution. Good luck." << endl << endl;
 
 	while (true) //runs until the the game is finished or the solution is given
 	{
 		bool answerDigitUsed[4] = {false, false, false, false}; //check correct guesses
 		bool guessDigitUsed[4] = {false, false, false, false};
 		cout << endl << "Please enter 4 digits: ";
-		cin >> guess;
+		//cin >> guess;
 		istringstream guessStream(guess);
 		int guessInt;
 		guessStream >> guessInt;
 
 		if (guessInt == -1) //give solution if -1 is given
 		{
-			cout << "The correct number is " << answerString << endl;
+			//cout << "The correct number is " << answerString << endl;
 			break;
 		}
 
 		if (!(guessInt >= 1000 && guessInt <= 9999)) //gives error for incorrect numbers
 		{
-			cout << endl << "Error! Not in the range of 1000-9999" << endl;
+			//cout << endl << "Error! Not in the range of 1000-9999" << endl;
 			continue;
 		}
 
@@ -133,15 +125,14 @@ int countCows(string &answer, string &guess, bool answerDigitUsed[], bool guessD
 
 		if (bulls == 4) //ends game when the player wins
 		{
-			cout << endl << "Bullseye! You correctly guessed " << answerString << endl;
+			//cout << endl << "Bullseye! You correctly guessed " << answerString << endl;
 			break;
 		}
 
 		int cows = countCows(answerString, guess, answerDigitUsed, guessDigitUsed);
 
-		cout << "Your guess of " << guess << " has " << bulls << " bull(s) and " << cows 
-			<< " cow(s)." << endl;
-	}
+		//cout << "Your guess of " << guess << " has " << bulls << " bull(s) and " << cows 
+		//	<< " cow(s)." << endl;
 
-	return 0;
+	}
 }*/
