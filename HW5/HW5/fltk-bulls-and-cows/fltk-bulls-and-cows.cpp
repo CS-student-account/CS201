@@ -31,12 +31,12 @@ using std::find;
 Fl_Input *inputGuess = new Fl_Input(143, 200, 120, 20, "Guess ");
 Fl_Output *outputResult = new Fl_Output(65, 230, 300, 20, "Result ");
 
-void guesscb(Fl_Widget *, void *userdata)
+void guesscb(Fl_Widget *, void *userdata) //callback function for Truncate button
 {
-	string inputGuessString = inputGuess->value();
+	string inputGuessString = inputGuess->value(); //convert pointer to string
 	stringstream stream(inputGuessString);
 	int inputGuessInt;
-	stream >> inputGuessInt;
+	stream >> inputGuessInt; //convert string to int
 
 
 	random_device device; //this method generates real, random numbers
@@ -61,39 +61,30 @@ void guesscb(Fl_Widget *, void *userdata)
 	}
 
 	string answerString = answerIntVectorStream.str(); //pushes the vector into a string
-	istringstream answerStream(answerString);
+	istringstream answerStream(answerString); //converts the answer vector to a string
 	int answerInt;
-	answerStream >> answerInt;
-	//string guess;
+	answerStream >> answerInt; //converts the answer string to an int
 
 	while (true) //runs until the the game is finished or the solution is given
 	{
 		bool answerDigitUsed[4] = { false, false, false, false }; //check correct guesses
 		bool guessDigitUsed[4] = { false, false, false, false };
-		//cout << endl << "Please enter 4 digits: ";
-		//cin >> guess;
-		/*istringstream guessStream(inputGuessString);
-		int guessInt;
-		guessStream >> guessInt;*/
 
 		if (inputGuessInt == -1) //give solution if -1 is given
 		{
-			//cout << "The correct number is " << answerString << endl;
 			string completeAnswerString = "The correct number is " + answerString;
 			const char* outputAnswer = const_cast<char*>(completeAnswerString.c_str());
 
-			outputResult->value(outputAnswer);
+			outputResult->value(outputAnswer); //push message to Result form
 			break;
 		}
 
-		if (!(inputGuessInt >= 1000 && inputGuessInt <= 9999)) //gives error for incorrect numbers
+		if (!(inputGuessInt >= 1000 && inputGuessInt <= 9999)) //give error for incorrect numbers
 		{
-			//cout << endl << "Error! Not in the range of 1000-9999" << endl;
 			string completeAnswerString = "Error! Not in the range of 1000-9999";
 			const char* outputAnswer = const_cast<char*>(completeAnswerString.c_str());
 
-			outputResult->value(outputAnswer);
-
+			outputResult->value(outputAnswer); //push message to Result form
 			break;
 		}
 
@@ -101,28 +92,25 @@ void guesscb(Fl_Widget *, void *userdata)
 
 		if (bulls == 4) //ends game when the player wins
 		{
-			//cout << endl << "Bullseye! You correctly guessed " << answerString << endl;
 			string completeAnswerString = "Bullseye! You correctly guessed " + answerString;
 			const char* outputAnswer = const_cast<char*>(completeAnswerString.c_str());
 
-			outputResult->value(outputAnswer);
-
+			outputResult->value(outputAnswer); //push message to Result form
 			break;
 		}
 
 		int cows = countCows(answerString, inputGuessString, answerDigitUsed, guessDigitUsed);
 
-		//cout << "Your guess of " << guess << " has " << bulls << " bull(s) and " << cows 
-		//	<< " cow(s)." << endl;
-		string completeAnswerString = "Your guess of " + inputGuessString + " has " + to_string(bulls) + " bull(s) and " + to_string(cows) + " cow(s).";
+		string completeAnswerString = "Your guess of " + inputGuessString + " has " + to_string(bulls) 
+			+ " bull(s) and " + to_string(cows) + " cow(s).";
 		const char* outputAnswer = const_cast<char*>(completeAnswerString.c_str());
 
-		outputResult->value(outputAnswer);
+		outputResult->value(outputAnswer); //push message to Result form
 		break;
 	}
 }
 
-void quitcb(Fl_Widget *, void *)
+void quitcb(Fl_Widget *, void *) //Quit button callback function
 {
 	exit(0);
 }
@@ -132,7 +120,7 @@ int main(int argc, char **argv)
 	Fl_Window win(380, 350, "fltk-bulls-and-cows");
 	win.begin();
 
-	Fl_Box *label1 = new Fl_Box(20, 10, 340, 20,
+	Fl_Box *label1 = new Fl_Box(20, 10, 340, 20, //each of these are just instruction text
 		"Welcome to the game of Bulls and Cows.");
 	label1->box(FL_NO_BOX);
 	label1->labelfont(FL_BOLD);
@@ -162,17 +150,17 @@ int main(int argc, char **argv)
 	label5->labelfont(FL_BOLD);
 	label5->align(FL_ALIGN_WRAP);
 
-	win.add(inputGuess);
+	win.add(inputGuess); //input form for user's Guess
 	inputGuess->tooltip("Enter a guess.");
 
-	win.add(outputResult);
+	win.add(outputResult); //output form for how close the user's guess was to the answer
 	outputResult->tooltip("Compares your guess to the correct answer.");
 
-	Fl_Button *buttonGuess = new Fl_Button(100, 310, 80, 25, "&Guess");
+	Fl_Button *buttonGuess = new Fl_Button(100, 310, 80, 25, "&Guess"); //Guess button
 	buttonGuess->tooltip("Checks whether the guessed number is correct or not.");
 	buttonGuess->callback(guesscb, 0);
 
-	Fl_Button *buttonQuit = new Fl_Button(180, 310, 80, 25, "&Quit");
+	Fl_Button *buttonQuit = new Fl_Button(180, 310, 80, 25, "&Quit"); //Quit button
 	buttonQuit->tooltip("Quits the application.");
 	buttonQuit->callback(quitcb, 0);
 
