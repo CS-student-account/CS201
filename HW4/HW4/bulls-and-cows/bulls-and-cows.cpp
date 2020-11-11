@@ -89,8 +89,7 @@ int main()
 	stringstream answerIntVectorStream;
 	for (size_t i = 0; i < answerIntVector.size(); ++i)
 	{
-		answerIntVectorStream << answerIntVector[i]; 
-
+		answerIntVectorStream << answerIntVector[i];
 	}
 
 	string answerString = answerIntVectorStream.str(); //pushges the vector into a string

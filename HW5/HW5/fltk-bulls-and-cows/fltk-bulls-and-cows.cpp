@@ -39,31 +39,11 @@ void guesscb(Fl_Widget *, void *userdata) //callback function for Truncate butto
 	stream >> inputGuessInt; //convert string to int
 
 
-	random_device device; //this method generates real, random numbers
-	mt19937 generator(device());
-	uniform_int_distribution<int> distribution(0, 9);
-	vector<int> answerIntVector;
-
-	while (answerIntVector.size() != 4) //pushes random numbers into the vector until it's full
-	{
-		int distributionInt = distribution(generator);
-		if (find(answerIntVector.begin(), answerIntVector.end(), distributionInt)
-			== answerIntVector.end()) //only pushes numbers that aren't already in the vector
-		{
-			answerIntVector.push_back(distributionInt);
-		}
-	}
-
-	stringstream answerIntVectorStream;
-	for (size_t i = 0; i < answerIntVector.size(); ++i)
-	{
-		answerIntVectorStream << answerIntVector[i];
-	}
-
-	string answerString = answerIntVectorStream.str(); //pushes the vector into a string
-	istringstream answerStream(answerString); //converts the answer vector to a string
+	string *answerStringPointer = static_cast<string*>(userdata);
+	string answerString = *answerStringPointer;
+	istringstream answerStream(answerString);
 	int answerInt;
-	answerStream >> answerInt; //converts the answer string to an int
+	answerStream >> answerInt;
 
 	while (true) //runs until the the game is finished or the solution is given
 	{
@@ -156,9 +136,47 @@ int main(int argc, char **argv)
 	win.add(outputResult); //output form for how close the user's guess was to the answer
 	outputResult->tooltip("Compares your guess to the correct answer.");
 
+	//https://stackoverflow.com/questions/29549873/stdmt19937-doesnt-return-random-number
+	/*random_device device; //this method generates real, random numbers
+	mt19937 generator(device());
+	uniform_int_distribution<int> distribution(0, 9);
+	int rand = generator();
+	rand %= 10000;
+	string randomString = to_string(rand);
+	void* random = &randomString;
+	int distributionInt = distribution(generator);/**/
+	random_device device; //this method generates real, random numbers
+	mt19937 generator(device());
+	uniform_int_distribution<int> distribution(0, 9);
+	vector<int> answerIntVector;
+
+	while (answerIntVector.size() != 4) //pushes random numbers into the vector until it's full
+	{
+		int distributionInt = distribution(generator);
+		if (find(answerIntVector.begin(), answerIntVector.end(), distributionInt)
+			== answerIntVector.end()) //only pushes numbers that aren't already in the vector
+		{
+			answerIntVector.push_back(distributionInt);
+		}
+	}
+
+	stringstream answerIntVectorStream;
+	for (int i = 0; i < answerIntVector.size(); ++i)
+	{
+		answerIntVectorStream << answerIntVector[i];
+	}
+	
+	string answerString;
+	answerIntVectorStream >> answerString; //pushes the vector into a string
+	void* random = static_cast<void*>(&answerString);
+
+	//char* answerChar = (char*) random;
+	//string answerStringString(answerChar);
+
 	Fl_Button *buttonGuess = new Fl_Button(100, 310, 80, 25, "&Guess"); //Guess button
 	buttonGuess->tooltip("Checks whether the guessed number is correct or not.");
-	buttonGuess->callback(guesscb, 0);
+	buttonGuess->callback(guesscb, random);
+
 
 	Fl_Button *buttonQuit = new Fl_Button(180, 310, 80, 25, "&Quit"); //Quit button
 	buttonQuit->tooltip("Quits the application.");
