@@ -32,6 +32,8 @@ using std::setprecision;
 using std::setw;
 using std::fixed;
 using std::round;
+using std::sort;
+using std::find;
 
 int RandomBetweenU(int first, int last)
 {
@@ -42,6 +44,36 @@ int RandomBetweenU(int first, int last)
 	uniform_int_distribution<int> uniform_dist(first, last);
 	int output = uniform_dist(e1);
 	cout << "Output: " << output;
+	return 0;
+}
+
+int RandomBetweenN(int first, int last)
+{
+	cout << endl << endl << endl;
+	cout << "RandomBetweenN(" << "First: " << first << ", Last: " << last << ")" << endl;
+	random_device r;
+	default_random_engine e1(r());
+
+	uniform_int_distribution<int> uniform_dist(first, last);
+	double outputDouble = uniform_dist(e1);
+
+	normal_distribution<double> normal_dist(outputDouble, 1);
+
+	// Generate a normal distribution around that mean
+	cout << "Mean: " << outputDouble << endl;
+
+	while (true)
+	{
+		int output = normal_dist(e1);
+
+		if (output >= first && output <= last)
+		{
+			cout << "Output: " << output;
+			break;
+		}
+	}
+
+	cout << endl;
 	return 0;
 }
 
@@ -66,7 +98,7 @@ int main()
 	{
 		++hist[round(normal_dist(e2))];
 	}
-	cout << "Normal distribution around " << mean << ":\n";
+	cout << "Normal distribution around: " << mean << "\n";
 	for (auto p : hist) 
 	{
 		cout << fixed << setprecision(1) << setw(2)
@@ -74,10 +106,19 @@ int main()
 	}
 
 
-	//uniform_int_distribution<int> uniform_dist(1, 6);
-	default_random_engine e3(r());
-	default_random_engine e4(r());
-	int randomInt1 = uniform_dist(e3);
-	int randomInt2 = uniform_dist(e4);
-	RandomBetweenU(randomInt1, randomInt2);
+	vector<int> pair;
+
+	while (pair.size() != 2) //pushes random numbers into the vector until it's full
+	{
+		int temp = uniform_dist(e1);
+		//only pushes numbers that aren't already in the vector
+		if (find(pair.begin(), pair.end(), temp) == pair.end())
+		{
+			pair.push_back(temp);
+		}
+	}
+	sort(pair.begin(), pair.end());
+
+	RandomBetweenU(pair.at(0), pair.at(1));
+	RandomBetweenN(pair.at(0), pair.at(1));
 }
