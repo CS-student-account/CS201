@@ -11,6 +11,9 @@
 #include <map>
 #include <random>
 #include <cmath>
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
 using std::cin;
 using std::cout;
 using std::endl;
@@ -72,8 +75,16 @@ int RandomBetweenN(int first, int last)
 			break;
 		}
 	}
+	return 0;
+}
 
-	cout << endl;
+int RandomBetween(int first, int last)
+{
+	cout << endl << endl << endl;
+	cout << "RandomBetween(" << "First: " << first << ", Last: " << last << ")" << endl;
+	srand(time(NULL));
+	int output = first + (rand() % last - first + 1);
+	cout << "Output: " << output << endl;
 	return 0;
 }
 
@@ -121,4 +132,5 @@ int main()
 
 	RandomBetweenU(pair.at(0), pair.at(1));
 	RandomBetweenN(pair.at(0), pair.at(1));
+	RandomBetween(pair.at(0), pair.at(1));
 }
