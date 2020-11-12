@@ -38,22 +38,20 @@ using std::round;
 using std::sort;
 using std::find;
 
-int RandomBetweenU(int first, int last)
+int RandomBetweenU(int &first, int &last)
 {
-	cout << endl << endl;
-	cout << "RandomBetweenU(" << "First: " << first << ", Last: " << last << ")" << endl;
+	//cout << "RandomBetweenU(" << "First: " << first << ", Last: " << last << ")" << endl;
 	random_device r;
 	default_random_engine e1(r());
 	uniform_int_distribution<int> uniform_dist(first, last);
 	int output = uniform_dist(e1);
-	cout << "Output: " << output;
-	return 0;
+	//cout << "Output: " << output;
+	return output;
 }
 
-int RandomBetweenN(int first, int last)
+int RandomBetweenN(int &first, int &last)
 {
-	cout << endl << endl << endl;
-	cout << "RandomBetweenN(" << "First: " << first << ", Last: " << last << ")" << endl;
+	//cout << "RandomBetweenN(" << "First: " << first << ", Last: " << last << ")" << endl;
 	random_device r;
 	default_random_engine e1(r());
 
@@ -62,30 +60,56 @@ int RandomBetweenN(int first, int last)
 
 	normal_distribution<double> normal_dist(outputDouble, 1);
 
-	// Generate a normal distribution around that mean
-	cout << "Mean: " << outputDouble << endl;
-
 	while (true)
 	{
 		int output = normal_dist(e1);
 
 		if (output >= first && output <= last)
 		{
-			cout << "Output: " << output;
+			//cout << "Output: " << output;
+			return output;
 			break;
 		}
 	}
-	return 0;
 }
 
-int RandomBetween(int first, int last)
+int RandomBetween(int &first, int &last)
 {
-	cout << endl << endl << endl;
-	cout << "RandomBetween(" << "First: " << first << ", Last: " << last << ")" << endl;
+	//cout << "RandomBetween(" << "First: " << first << ", Last: " << last << ")" << endl;
 	srand(time(NULL));
 	int output = first + (rand() % last - first + 1);
-	cout << "Output: " << output << endl;
-	return 0;
+	//cout << "Output: " << output << endl;
+	return output;
+}
+
+void PrintDistribution(const map<int, int> &numbers)
+{
+	// Seed with a real random value, if available
+	random_device r;
+
+	// Choose a random mean between 1 and 6
+	default_random_engine e1(r());
+	uniform_int_distribution<int> uniform_dist(1, 6);
+	int mean = uniform_dist(e1);
+	cout << "Randomly-chosen mean: " << mean << endl;
+
+	// Generate a normal distribution around that mean
+	seed_seq seed2{ r(), r(), r(), r(), r(), r(), r(), r() };
+	mt19937 e2(seed2);
+	normal_distribution<> normal_dist(mean, 2);
+
+	map<int, int> hist = numbers;
+	for (int n = 0; n < 10000; ++n)
+	{
+		++hist[round(normal_dist(e2))];
+	}
+	cout << "Normal distribution around: " << mean << endl;
+	for (auto p : hist)
+	{
+		cout << fixed << setprecision(1) << setw(2)
+			<< p.first << ' ' << string(p.second / 200, '*') << endl;
+	}
+	cout << endl;
 }
 
 int main()
@@ -97,28 +121,8 @@ int main()
 	default_random_engine e1(r());
 	uniform_int_distribution<int> uniform_dist(1, 6);
 	int mean = uniform_dist(e1);
-	cout << "Randomly-chosen mean: " << mean << '\n';
-
-	// Generate a normal distribution around that mean
-	seed_seq seed2{ r(), r(), r(), r(), r(), r(), r(), r() };
-	mt19937 e2(seed2);
-	normal_distribution<> normal_dist(mean, 2);
-
-	map<int, int> hist;
-	for (int n = 0; n < 10000; ++n) 
-	{
-		++hist[round(normal_dist(e2))];
-	}
-	cout << "Normal distribution around: " << mean << "\n";
-	for (auto p : hist) 
-	{
-		cout << fixed << setprecision(1) << setw(2)
-			<< p.first << ' ' << string(p.second / 200, '*') << '\n';
-	}
-
 
 	vector<int> pair;
-
 	while (pair.size() != 2) //pushes random numbers into the vector until it's full
 	{
 		int temp = uniform_dist(e1);
@@ -130,7 +134,12 @@ int main()
 	}
 	sort(pair.begin(), pair.end());
 
-	RandomBetweenU(pair.at(0), pair.at(1));
-	RandomBetweenN(pair.at(0), pair.at(1));
-	RandomBetween(pair.at(0), pair.at(1));
+	map<int, int> map1 = {{RandomBetweenU(pair.at(0), pair.at(1)), RandomBetweenU(pair.at(0), pair.at(1))}};
+	PrintDistribution(map1);
+	
+	map<int, int> map2 = { {RandomBetweenN(pair.at(0), pair.at(1)), RandomBetweenN(pair.at(0), pair.at(1))} };
+	PrintDistribution(map2);
+	
+	map<int, int> map3 = { {RandomBetween(pair.at(0), pair.at(1)), RandomBetween(pair.at(0), pair.at(1))} };
+	PrintDistribution(map3);
 }
