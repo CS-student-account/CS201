@@ -20,12 +20,12 @@ using std::vector;
 vector<int> v1 = { 1, 2, 3, 4, 5 };
 vector<int> v2 = { 6, 7, 8, 9, 10 };
 
-int Sine(int number)
+int Sine(const int &number) //sine function that takes an int
 {
-	int x = number;
-	return sin(x);
+	return sin(number);
 }
 
+//atan2 function that takes two doubles
 double Atan2(double number1, double number2)
 {
 	double x = number1;
@@ -33,11 +33,13 @@ double Atan2(double number1, double number2)
 	return atan2(x, y);
 }
 
+//accumulate function that takes two vector iterators and an int
 int Accumulate(vector<int>::iterator number1, vector<int>::iterator number2, int inputSum)
 {
 	return accumulate(number1, number2, inputSum);
 }
 
+//inner product function that takes three vector iterators and an int
 int InnerProduct(vector<int>::iterator vector1Begin, vector<int>::iterator vector1End,
 	vector<int>::iterator vector2Begin, int initial)
 {
@@ -45,6 +47,7 @@ int InnerProduct(vector<int>::iterator vector1Begin, vector<int>::iterator vecto
 	return output;
 }
 
+//uses Catch to test a correct and incorrect sine comparison
 TEST_CASE("Sine STL function", "[sin]")
 {
 	SECTION("A correct sine")
@@ -58,6 +61,7 @@ TEST_CASE("Sine STL function", "[sin]")
 	}
 }
 
+//uses Catch to test a correct and incorrect atan2 comparison
 TEST_CASE("Atan2 STL function", "[atan2]")
 {
 	SECTION("A correct atan2")
@@ -71,6 +75,7 @@ TEST_CASE("Atan2 STL function", "[atan2]")
 	}
 }
 
+//uses Catch to test a correct and incorrect accumulation comparison
 TEST_CASE("Accumulate STL function", "[accumulate]")
 {
 	SECTION("A correct accumulation")
@@ -84,6 +89,7 @@ TEST_CASE("Accumulate STL function", "[accumulate]")
 	}
 }
 
+//uses Catch to test a correct and incorrect inner product comparison
 TEST_CASE("Inner Product STL function", "[inner_product]")
 {
 	SECTION("A correct inner product")
