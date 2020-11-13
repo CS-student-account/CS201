@@ -10,5 +10,5 @@ using namespaceexternal::main1;
 
 int main(int argc, char **argv)
 {
-	main1(argc, argv);
+	main1(argc, argv); //call main1, which calls everything else
 }

@@ -1,7 +1,7 @@
 /*
 * random-map.cpp
 * David Misyura
-* 11 Nov 2020
+* 12 Nov 2020
 * random-map.cpp for CS201
 */
 
@@ -44,8 +44,6 @@ int RandomBetweenU(const int &first, const int &last)
 	default_random_engine e1(r());
 	uniform_int_distribution<int> uniform_dist(first, last);
 	int output = uniform_dist(e1);
-	//cout << "Output: " << output;
-	//cout << "Uniformly-distributed random mean";
 	return output;
 }
 
@@ -80,9 +78,7 @@ int RandomBetweenN(const int &first, const int &last)
 
 int RandomBetween(const int &first, const int &last)
 {
-	//srand(time(NULL));
 	int output = first + (rand() % last - first + 1);
-	//cout << "Output: " << output << endl;
 	return output;
 }
 
@@ -115,6 +111,7 @@ int main()
 	}
 	sort(pair.begin(), pair.end());*/
 
+	cout << "Uniformly distributed histogram" << endl;
 	map<int, int> histogram1;
 	for (int n = 0; n < 10000; ++n) 
 	{
@@ -122,6 +119,7 @@ int main()
 	}
 	PrintDistribution(histogram1);
 
+	cout << "Normally distributed histogram" << endl;
 	map<int, int> histogram2;
 	for (int n = 0; n < 10000; ++n) 
 	{
@@ -129,6 +127,7 @@ int main()
 	}
 	PrintDistribution(histogram2);
 	
+	cout << "Rand() histogram" << endl;
 	map<int, int> histogram3;
 	for (int n = 0; n < 10000; ++n) 
 	{

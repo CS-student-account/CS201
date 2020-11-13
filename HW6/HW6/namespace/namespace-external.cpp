@@ -27,7 +27,7 @@ using std::uniform_int_distribution;
 using std::to_string;
 using std::find;
 
-namespace namespaceexternal
+namespace namespaceexternal //all FLTK functions are placed within this namespace
 {
 	//returns the number of bulls for each guess
 	int countBulls(string &answer, string &guess, bool answerDigitUsed[], bool guessDigitUsed[])

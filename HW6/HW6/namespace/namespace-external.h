@@ -2,15 +2,10 @@
 #define FILE_NAMESPACEEXTERNAL_HPP_INCLUDED
 
 #include <string>
-#include <FL/Fl.H>
-#include <FL/Fl_Window.H>
-#include <FL/Fl_Button.H>
-#include <FL/Fl_Input.H>
-#include <FL/Fl_Output.H>
-#include <FL/Fl_Box.H>
 
 namespace namespaceexternal
 {
+	//provide header for main 1 only because it calls all the other functions
 	int main1(int argc, char **argv);
 }
 
