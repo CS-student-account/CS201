@@ -38,6 +38,7 @@ using std::round;
 using std::sort;
 using std::find;
 
+//returns a uniform random number between two integers
 int RandomBetweenU(const int &first, const int &last)
 {
 	random_device r;
@@ -47,6 +48,7 @@ int RandomBetweenU(const int &first, const int &last)
 	return output;
 }
 
+//returns a normal random number between two integers
 int RandomBetweenN(const int &first, const int &last)
 {
 	random_device r;
@@ -62,26 +64,16 @@ int RandomBetweenN(const int &first, const int &last)
 
 	int output = normal_dist(e2);
 	return output;
-
-	/*while (true)
-	{
-		int output = normal_dist(e1);
-
-		if (output >= first && output <= last)
-		{
-			//cout << "Output: " << output;
-			return output;
-			break;
-		}
-	}*/
 }
 
+//returns a pseudo random number between two integers using rand()
 int RandomBetween(const int &first, const int &last)
 {
 	int output = first + (rand() % last - first + 1);
 	return output;
 }
 
+//prints a histogram of a given map of the three random number functions
 void PrintDistribution(const map<int, int> &numbers)
 {
 	for (auto p : numbers)
@@ -94,23 +86,7 @@ void PrintDistribution(const map<int, int> &numbers)
 
 int main()
 {
-	/*random_device r;
-	default_random_engine e1(r());
-	uniform_int_distribution<int> uniform_dist(1, 10);
-	int mean = uniform_dist(e1);
-
-	vector<int> pair;
-	while (pair.size() != 2) //pushes random numbers into the vector until it's full
-	{
-		int temp = uniform_dist(e1);
-		//only pushes numbers that aren't already in the vector
-		if (find(pair.begin(), pair.end(), temp) == pair.end())
-		{
-			pair.push_back(temp);
-		}
-	}
-	sort(pair.begin(), pair.end());*/
-
+	//code for creating and printing a uniformly distributed histrogram
 	cout << "Uniformly distributed histogram" << endl;
 	map<int, int> histogram1;
 	for (int n = 0; n < 10000; ++n) 
@@ -119,6 +95,7 @@ int main()
 	}
 	PrintDistribution(histogram1);
 
+	//code for creating and printing a normally distributed histrogram
 	cout << "Normally distributed histogram" << endl;
 	map<int, int> histogram2;
 	for (int n = 0; n < 10000; ++n) 
@@ -127,6 +104,7 @@ int main()
 	}
 	PrintDistribution(histogram2);
 	
+	//code for creating and printing a pseudorandom distributed histrogram
 	cout << "Rand() histogram" << endl;
 	map<int, int> histogram3;
 	for (int n = 0; n < 10000; ++n) 
