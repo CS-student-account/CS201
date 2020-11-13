@@ -11,9 +11,9 @@
 #include <map>
 #include <random>
 #include <cmath>
-#include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
+#include <cstdio>
+#include <cstdlib>
+#include <ctime>
 using std::cin;
 using std::cout;
 using std::endl;
@@ -38,18 +38,18 @@ using std::round;
 using std::sort;
 using std::find;
 
-int RandomBetweenU(int &first, int &last)
+int RandomBetweenU(const int &first, const int &last)
 {
 	random_device r;
 	default_random_engine e1(r());
 	uniform_int_distribution<int> uniform_dist(first, last);
 	int output = uniform_dist(e1);
 	//cout << "Output: " << output;
-	cout << "Uniformly-distributed random mean";
+	//cout << "Uniformly-distributed random mean";
 	return output;
 }
 
-int RandomBetweenN(int &first, int &last)
+int RandomBetweenN(const int &first, const int &last)
 {
 	random_device r;
 	default_random_engine e1(r());
@@ -57,9 +57,15 @@ int RandomBetweenN(int &first, int &last)
 	uniform_int_distribution<int> uniform_dist(first, last);
 	double outputDouble = uniform_dist(e1);
 
-	normal_distribution<double> normal_dist(outputDouble, 1);
+	seed_seq seed2{ r(), r(), r(), r(), r(), r(), r(), r() };
+	mt19937 e2(seed2);
 
-	while (true)
+	normal_distribution<double> normal_dist(outputDouble, 2);
+
+	int output = normal_dist(e2);
+	return output;
+
+	/*while (true)
 	{
 		int output = normal_dist(e1);
 
@@ -69,12 +75,12 @@ int RandomBetweenN(int &first, int &last)
 			return output;
 			break;
 		}
-	}
+	}*/
 }
 
-int RandomBetween(int &first, int &last)
+int RandomBetween(const int &first, const int &last)
 {
-	srand(time(NULL));
+	//srand(time(NULL));
 	int output = first + (rand() % last - first + 1);
 	//cout << "Output: " << output << endl;
 	return output;
@@ -82,40 +88,17 @@ int RandomBetween(int &first, int &last)
 
 void PrintDistribution(const map<int, int> &numbers)
 {
-	// Seed with a real random value, if available
-	random_device r;
-
-	// Choose a random mean between 1 and 10
-	default_random_engine e1(r());
-	uniform_int_distribution<int> uniform_dist(numbers.first, numbers.second);
-	int mean = uniform_dist(e1);
-	//cout << "Randomly-chosen mean: " << mean << endl;
-
-	// Generate a normal distribution around that mean
-	seed_seq seed2{ r(), r(), r(), r(), r(), r(), r(), r() };
-	mt19937 e2(seed2);
-	normal_distribution<> normal_dist(mean, 2);
-
-	map<int, int> hist;
-	for (int n = 0; n < 10000; ++n)
-	{
-		++hist[round(normal_dist(e2))];
-	}
-	cout << "Normal distribution around: " << mean << endl;
-	for (auto p : hist)
+	for (auto p : numbers)
 	{
 		cout << fixed << setprecision(1) << setw(2)
-			<< p.first << ' ' << string(p.second / 200, '*') << endl;
+			<< p.first << ' ' << string(p.second / 100, '*') << endl;
 	}
 	cout << endl;
 }
 
 int main()
 {
-	// Seed with a real random value, if available
-	random_device r;
-
-	// Choose a random mean between 1 and 6
+	/*random_device r;
 	default_random_engine e1(r());
 	uniform_int_distribution<int> uniform_dist(1, 10);
 	int mean = uniform_dist(e1);
@@ -130,14 +113,26 @@ int main()
 			pair.push_back(temp);
 		}
 	}
-	sort(pair.begin(), pair.end());
+	sort(pair.begin(), pair.end());*/
 
-	map<int, int> map1 = {{RandomBetweenU(pair.at(0), pair.at(1)), RandomBetweenU(pair.at(0), pair.at(1))}};
-	PrintDistribution(map1);
+	map<int, int> histogram1;
+	for (int n = 0; n < 10000; ++n) 
+	{
+		++histogram1[RandomBetweenU(1, 10)];
+	}
+	PrintDistribution(histogram1);
+
+	map<int, int> histogram2;
+	for (int n = 0; n < 10000; ++n) 
+	{
+		++histogram2[RandomBetweenN(1, 10)];
+	}
+	PrintDistribution(histogram2);
 	
-	map<int, int> map2 = {{RandomBetweenN(pair.at(0), pair.at(1)), RandomBetweenN(pair.at(0), pair.at(1))}};
-	PrintDistribution(map2);
-	
-	map<int, int> map3 = {{RandomBetween(pair.at(0), pair.at(1)), RandomBetween(pair.at(0), pair.at(1))}};
-	PrintDistribution(map3);
+	map<int, int> histogram3;
+	for (int n = 0; n < 10000; ++n) 
+	{
+		++histogram3[RandomBetween(1, 10)];
+	}
+	PrintDistribution(histogram3);
 }

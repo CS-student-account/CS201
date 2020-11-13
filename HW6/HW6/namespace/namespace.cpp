@@ -5,7 +5,7 @@
 * namespace.cpp for CS201
 */
 
-#include "bulls-and-cows.h"
+#include "namespaces-external.h"
 #include <string>
 #include <vector>
 #include <sstream>
