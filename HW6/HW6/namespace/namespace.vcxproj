@@ -154,6 +154,9 @@
     <ClCompile Include="namespace-external.cpp" />
     <ClCompile Include="namespace.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="namespace-external.h" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
