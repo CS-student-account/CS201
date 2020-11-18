@@ -64,6 +64,18 @@ int RandomBetweenN(const int &first, const int &last)
 
 	int output = normal_dist(e2);
 	return output;
+
+	/*while (true)
+	{
+		int output = normal_dist(e1);
+
+		if (output >= first && output <= last)
+		{
+			//cout << "Output: " << output;
+			return output;
+			break;
+		}
+	}*/
 }
 
 //returns a pseudo random number between two integers using rand()
@@ -86,6 +98,23 @@ void PrintDistribution(const map<int, int> &numbers)
 
 int main()
 {
+	/*random_device r;
+	default_random_engine e1(r());
+	uniform_int_distribution<int> uniform_dist(1, 10);
+	int mean = uniform_dist(e1);
+
+	vector<int> pair;
+	while (pair.size() != 2) //pushes random numbers into the vector until it's full
+	{
+		int temp = uniform_dist(e1);
+		//only pushes numbers that aren't already in the vector
+		if (find(pair.begin(), pair.end(), temp) == pair.end())
+		{
+			pair.push_back(temp);
+		}
+	}
+	sort(pair.begin(), pair.end());*/
+
 	//code for creating and printing a uniformly distributed histrogram
 	cout << "Uniformly distributed histogram" << endl;
 	map<int, int> histogram1;

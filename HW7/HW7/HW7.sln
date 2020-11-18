@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.1259
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "asciiart", "asciiart\asciiart.vcxproj", "{29BB1F47-0E82-4FE8-9CE4-99518C4878CA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{29BB1F47-0E82-4FE8-9CE4-99518C4878CA}.Debug|x64.ActiveCfg = Debug|x64
+		{29BB1F47-0E82-4FE8-9CE4-99518C4878CA}.Debug|x64.Build.0 = Debug|x64
+		{29BB1F47-0E82-4FE8-9CE4-99518C4878CA}.Debug|x86.ActiveCfg = Debug|Win32
+		{29BB1F47-0E82-4FE8-9CE4-99518C4878CA}.Debug|x86.Build.0 = Debug|Win32
+		{29BB1F47-0E82-4FE8-9CE4-99518C4878CA}.Release|x64.ActiveCfg = Release|x64
+		{29BB1F47-0E82-4FE8-9CE4-99518C4878CA}.Release|x64.Build.0 = Release|x64
+		{29BB1F47-0E82-4FE8-9CE4-99518C4878CA}.Release|x86.ActiveCfg = Release|Win32
+		{29BB1F47-0E82-4FE8-9CE4-99518C4878CA}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E13FF8EA-9197-427C-AD31-D9E2D3418978}
+	EndGlobalSection
+EndGlobal
