@@ -152,6 +152,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="asciiart.cpp" />
+    <ClCompile Include="Color3.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Color3.hpp" />
