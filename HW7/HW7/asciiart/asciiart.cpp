@@ -5,14 +5,16 @@
 * aciiart.cpp for CS201
 */
 
+#include "Color3.hpp"
+#include "Image3.hpp"
 #include <fstream>
-using std::ifstream;
 #include <iostream>
 #include <string>
 using std::cout;
 using std::endl;
 using std::string;
 using std::getline;
+using std::ifstream;
 
 int main()
 {
@@ -49,7 +51,8 @@ int main()
 	fin >> xres >> yres >> maxval;
 	if (!fin) 
 	{ 
-		cout << "Error reading" << endl; exit(1); 
+		cout << "Error reading" << endl; 
+		exit(1); 
 	}
 	cout << "Image size " << xres << "x" << yres << endl;
 	cout << "Maxval = " << maxval << endl;
@@ -70,13 +73,13 @@ int main()
 			exit(6);
 		}
 		// map y to a character
-		const char values[] = " .-+*@0#";
+		const char values[] = " .,`^*:;!12O38X@";
 		// values [0, 7] and y [0, 255] so / by 32
-		int val_map = y / 32;
+		int val_map = y / 16;
 		//    cout << " -> " << val_map << " -> " << values[val_map] << endl;
 
 		cout << values[val_map];
-		if (i % 80 == 79) cout << endl;
+		if (i % xres == xres-1) cout << endl;
 
 	}
 
@@ -86,5 +89,24 @@ int main()
 	// HW7 - convert to grayscale (R,G,B) -> Gray
 	// HW7 - convert Gray to ASCII char
 
-	cout << "Done" << endl;
+	cout << endl << "Done" << endl;
+
+
+	Image3 ppmObject;
+	std::ifstream image;
+	std::ofstream outFile;
+
+	image.open("C:\\Desktop\\PPMImage.ppm", std::ios::binary);
+	image >> ppmObject;
+
+	image.clear();
+	image.close();
+
+	outFile.open("C:\\Desktop\\NewImage.ppm", std::ios::binary);
+	outFile << ppmObject;
+
+	outFile.clear();
+	outFile.close();
+
+	return 0;
 }
