@@ -152,6 +152,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Agent.cpp" />
+    <ClCompile Include="Environment.cpp" />
     <ClCompile Include="thermostat.cpp" />
   </ItemGroup>
   <ItemGroup>
