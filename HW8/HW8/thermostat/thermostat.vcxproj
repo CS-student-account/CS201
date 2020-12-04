@@ -156,6 +156,7 @@
   <ItemGroup>
     <ClInclude Include="Agent.h" />
     <ClInclude Include="Environment.h" />
+    <ClInclude Include="Simulator.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
