@@ -20,9 +20,9 @@ public:
 	// e.g. ' ' = WHITE and 'W' = BLACK
 	char asciiValue() const;
 
-	unsigned char r;
-	unsigned char g;
-	unsigned char b;
+	unsigned int r;
+	unsigned int g;
+	unsigned int b;
 };
 
 std::ostream& operator<<(std::ostream& ostr, const Color3& color);

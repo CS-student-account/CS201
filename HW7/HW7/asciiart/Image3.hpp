@@ -25,7 +25,6 @@ public:
 	std::vector<Color3> pixels;
 	unsigned w;
 	unsigned h;
-	Color3 borderColor;
 };
 
 std::ostream& operator<<(std::ostream& ostr, const Image3& image);

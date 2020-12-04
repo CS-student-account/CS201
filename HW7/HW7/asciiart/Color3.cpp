@@ -3,11 +3,13 @@
 // Original Author: Jonathan Metzgar
 // CS 201 course
 #include <iomanip>
+#include <string>
 #include "Color3.hpp"
 
 using std::setw;
 using std::ostream;
 using std::istream;
+using std::stoi;
 
 // Ensure values are in the range 0 to maxvalue
 constexpr int saturate(int x, int maxvalue) 
@@ -21,9 +23,9 @@ Color3::Color3()
 
 Color3::Color3(int R, int G, int B)
 {
-	r = (unsigned char)saturate(R, 255);
-	g = (unsigned char)saturate(G, 255);
-	b = (unsigned char)saturate(B, 255);
+	r = saturate(R, 255);
+	g = saturate(G, 255);
+	b = saturate(B, 255);
 }
 
 int Color3::weightedSum() const 

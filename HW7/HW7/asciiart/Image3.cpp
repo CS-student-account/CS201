@@ -40,7 +40,7 @@ void Image3::setPixel(unsigned x, unsigned y, const Color3& color)
 	pixels[y * w + x] = color;
 }
 
-bool Image3::savePPM(const string& path) const 
+bool Image3::savePPM(const string& path) const
 {
 	// TODO: Save the image to the disk
 	// REQUIREMENT: Use the STREAM operators for the file contents
@@ -71,28 +71,14 @@ bool Image3::loadPPM(const string& path)
 void Image3::printASCII(ostream& ostr) const 
 {
 	// TODO: Print an ASCII version of this image
-	/*for (int i; i < w; i++)
+	for (int i = 0; i < h; i++)
 	{
-		for (int j; j < h; j++)
+		for (int j = 0; j < w; j++)
 		{
-
+			cout << pixels[i * w + j].asciiValue();
 		}
-
+		cout << endl;
 	}
-	cout << ostr;*/
-	/*for (int i = 0; i < w*h; i++)
-	{
-		ostr << pixels.at(i);
-		if (i % w*h == (w*h)-1)
-		{
-			ostr << endl;
-		}
-	}*/
-	for (auto i : pixels)
-	{
-		ostr << i.r << i.g << i.b << endl;
-	}
-
 }
 
 // STREAM OPERATORS for IMAGE3 class
@@ -105,7 +91,10 @@ ostream& operator<<(ostream& ostr, const Image3& image)
 	ostr << image.w << " ";
 	ostr << image.h << endl;
 	ostr << "255" << endl;
-	ostr << image.r << i.g << i.b << endl;
+	for (auto i : image.pixels)
+	{
+		ostr << i.r << " " << i.g << " " << i.b << endl;
+	}
 
 	return ostr;
 }
@@ -115,27 +104,22 @@ istream& operator>>(istream& istr, Image3& image)
 	// TODO: Read in PPM image format from stream
 	// MAKE SURE FORMAT IS GOOD!!!
 
-	for (auto i : image.pixels)
-	{
-		istr << i.r << i.g << i.b << endl;
-	}
-
 	string line, magicNumber;
 	getline(istr, line);
 	if (line[0] == 'P' && line[1] == '3')
 	{
-		cout << "PPM" << endl;
+		cout << "PPM image" << endl;
 		magicNumber = "P3";
 	}
 	else
 	{
-		cout << "Unable to read magic number P3" << endl;
+		cout << "This is not a PPM image" << endl;
 	}
 
 	getline(istr, line);
 	if (line[0] == '#')
 	{
-		cout << "Ignoring comment" << endl;
+		cout << "Ignoring comment(s)" << endl;
 	}
 
 	int xres, yres, maxval;
@@ -145,9 +129,10 @@ istream& operator>>(istream& istr, Image3& image)
 		cout << "Error reading" << endl; 
 	}
 
-	istr >> maxval;
-	istr >> image.w >> image.h >> magicNumber;
-	istr.get(); // skip the trailing white space
+	for (auto &i : image.pixels) //stream in every pixel by reference
+	{
+		istr >> i;
+	}
 
 	return istr;
 }

@@ -18,7 +18,7 @@ using std::ifstream;
 
 int main()
 {
-	ifstream fin("parrot.ppm");
+	/*ifstream fin("parrot.ppm");
 	if (!fin) 
 	{
 		cout << "Error opening parrot.ppm" << endl;
@@ -81,7 +81,7 @@ int main()
 		cout << values[val_map];
 		if (i % xres == xres-1) cout << endl;
 
-	}
+	}*/
 
 	// finish reading - store R,G,B into a vector
 	// move read to a function
@@ -89,24 +89,13 @@ int main()
 	// HW7 - convert to grayscale (R,G,B) -> Gray
 	// HW7 - convert Gray to ASCII char
 
-	cout << endl << "Done" << endl;
+	//cout << endl << "Done" << endl;
 
 
-	Image3 ppmObject;
-	std::ifstream image;
-	std::ofstream outFile;
-
-	image.open("C:\\Desktop\\PPMImage.ppm", std::ios::binary);
-	image >> ppmObject;
-
-	image.clear();
-	image.close();
-
-	outFile.open("C:\\Desktop\\NewImage.ppm", std::ios::binary);
-	outFile << ppmObject;
-
-	outFile.clear();
-	outFile.close();
+	ifstream fin("parrot.ppm");
+	Image3 image(80,80);
+	fin >> image;
+	image.printASCII(cout);
 
 	return 0;
 }
