@@ -1,4 +1,4 @@
-// Agent.hpp
+// Agent.h
 // Interface for Agent class
 #ifndef AGENT_HPP
 #define AGENT_CPP
