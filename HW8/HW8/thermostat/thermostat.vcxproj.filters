@@ -18,6 +18,9 @@
     <ClCompile Include="thermostat.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Agent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Agent.h">

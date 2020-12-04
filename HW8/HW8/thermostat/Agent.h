@@ -10,4 +10,5 @@ class Agent
 public:
 	Agent();
 };
+
 #endif

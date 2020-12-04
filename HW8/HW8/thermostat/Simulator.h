@@ -10,4 +10,5 @@ class Simulator
 public:
 	Simulator();
 };
+
 #endif

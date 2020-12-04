@@ -10,4 +10,5 @@ class Environment
 public:
 	Environment();
 };
+
 #endif
